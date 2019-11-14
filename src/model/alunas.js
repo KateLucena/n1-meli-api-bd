@@ -8,5 +8,9 @@ const AlunasSchema = new mongoose.Schema({ //resumo das características que tem
     livros: [{ titulo: String, leu: String }] //Boolean se não fosse string
 })
 
+const Alunas = mongoose.model('Alunas', AlunasSchema);
+
+module.exports = Alunas;
+
 //Exemplo para deixar o parametro como obrigatório:
 // var sampleSchema = new Schema({ name: {type: String, required: true}})
