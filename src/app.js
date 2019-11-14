@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const bodyParser = require('body-parser'); //dependencia que converte os dados passados no body para json
 
 const app = express()
 
@@ -27,6 +28,8 @@ app.use(function(req, res, next) {
   )
   next()
 })
+
+app.use(bodyParser.json()); //converte os dados passados no body para json
 
 app.use("/", index)
 app.use("/alunas", alunas)

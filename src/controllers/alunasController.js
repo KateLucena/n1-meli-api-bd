@@ -97,17 +97,24 @@ function calcularIdade(anoDeNasc, mesDeNasc, diaDeNasc) {
 }
 
 exports.post = (req, res) => { 
-  const { nome, dateOfBirth, nasceuEmSp, id, livros } = req.body;
-  alunas.push({ nome, dateOfBirth, nasceuEmSp, id, livros });
+let aluna = new Alunas(req.body);
 
-  fs.writeFile("./src/model/alunas.json", JSON.stringify(alunas), 'utf8', function (err) {
-    if (err) {
-      return res.status(500).send({ message: err });
-    }
-    console.log("The file was saved!");
-  }); 
+aluna.save(function(err){
+  if(err) return res.status(500).send(err);
 
-  return res.status(201).send(alunas);
+  return res.status(201).send(aluna);
+})
+  // const { nome, dateOfBirth, nasceuEmSp, id, livros } = req.body;
+  // alunas.push({ nome, dateOfBirth, nasceuEmSp, id, livros });
+
+  // fs.writeFile("./src/model/alunas.json", JSON.stringify(alunas), 'utf8', function (err) {
+  //   if (err) {
+  //     return res.status(500).send({ message: err });
+  //   }
+  //   console.log("The file was saved!");
+  // }); 
+
+  // return res.status(201).send(alunas);
 }
 
 exports.postBooks = (req, res) => {
