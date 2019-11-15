@@ -6,6 +6,8 @@ const AlunasSchema = new mongoose.Schema({ //resumo das características que tem
     nasceuEmSp: { type: String }, //Boolean se não fosse string
     //id: {}
     livros: [{ titulo: String, leu: String }] //Boolean se não fosse string
+},{
+    versionKey:false // não mostrar no registro do banco de dados a versão
 })
 
 const Alunas = mongoose.model('Alunas', AlunasSchema);
